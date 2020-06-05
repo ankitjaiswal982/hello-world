@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd"></mule>
+	xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+	
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="b6328df6-6c14-4934-934b-4dceaea3396a" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="hello-wordFlow" doc:id="873b71e1-a777-411d-9615-4a4050955564" >
+		<http:listener doc:name="Listener" doc:id="63b973bb-6ed0-4b0d-ac28-9e11b567d5bd" config-ref="HTTP_Listener_config" path="/api/hit"/>
+		<logger level="INFO" doc:name="Logger" doc:id="55ae3289-5b31-4599-a25f-341686268c23" message="lalalla"/>
+	</flow>
+	
+	
+	</mule>
